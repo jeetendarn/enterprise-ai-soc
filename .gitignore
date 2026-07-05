@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+
+# React
+dist/
+build/
+
+# Docker
+*.pid
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Misc
+coverage/
