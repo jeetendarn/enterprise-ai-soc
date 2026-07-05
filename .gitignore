@@ -1,48 +1,59 @@
+# =========================
 # Python
+# =========================
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 *.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual Environment
 .venv/
 venv/
 env/
 
-# Environment
+# Environment Variables
 .env
-.env.*
-
-# IDE
-.vscode/
-.idea/
 
 # Logs
 *.log
 
-# Testing
-.pytest_cache/
+# Coverage
 .coverage
 htmlcov/
 
-# Node
-node_modules/
+# =========================
+# VS Code
+# =========================
+.vscode/
 
-# React
-dist/
-build/
+# =========================
+# JetBrains
+# =========================
+.idea/
 
-# Docker
-*.pid
-
-# OS
+# =========================
+# macOS
+# =========================
 .DS_Store
-Thumbs.db
 
-# Database
-*.db
+# =========================
+# Linux
+# =========================
+*~
 
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.*
+# =========================
+# Node
+# =========================
+frontend/node_modules/
 
-# Misc
-coverage/
+# React Build
+frontend/dist/
+
+# =========================
+# Docker
+# =========================
+*.pid

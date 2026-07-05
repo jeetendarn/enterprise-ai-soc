@@ -35,11 +35,11 @@ Enterprise AI Security Operations Center
 
 Features
 
-• SIEM
-• Threat Intelligence
-• AI SOC Analyst
-• Incident Response
-• IOC Management
+    • SIEM
+    • Threat Intelligence
+    • AI SOC Analyst
+    • Incident Response
+    • IOC Management
 """,
     debug=settings.DEBUG,
     lifespan=lifespan,

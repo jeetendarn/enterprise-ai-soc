@@ -33,4 +33,3 @@ class BaseModel(Base):
         onupdate=func.now(),
         nullable=False,
     )
-import app.db.models  # noqa: F401
