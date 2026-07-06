@@ -10,8 +10,8 @@ from app.db.dependencies import get_db
 
 from app.auth.dependencies import get_current_user
 from app.db.models import User
-from app.auth.dependencies import require_admin
-from app.auth.dependencies import require_analyst
+from app.auth.dependencies import get_admin_user
+from app.auth.dependencies import get_analyst_user
 
 router = APIRouter(
     prefix="/auth",
@@ -53,7 +53,7 @@ def get_me(
 
 @router.get("/admin")
 def admin_dashboard(
-    current_user: User = Depends(require_admin),
+    current_user: User = Depends(get_admin_user),
 ):
     return {
         "message": "Welcome Admin",
@@ -62,7 +62,7 @@ def admin_dashboard(
 
 @router.get("/analyst")
 def analyst_dashboard(
-    current_user: User = Depends(require_analyst),
+    current_user: User = Depends(get_analyst_user),
 ):
     return {
         "message": "SOC Analyst Dashboard",

@@ -51,7 +51,7 @@ def get_current_user(
 
 
 
-def require_admin(
+def get_admin_user(
     current_user: User = Depends(get_current_user),
 ) -> User:
 
@@ -62,9 +62,7 @@ def require_admin(
         )
 
     return current_user
-
-
-def require_analyst(
+def get_analyst_user(
     current_user: User = Depends(get_current_user),
 ) -> User:
 
