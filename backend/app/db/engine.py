@@ -3,15 +3,6 @@ from sqlalchemy import create_engine
 from app.core.config import settings
 from app.core.config import settings
 
-print("=" * 60)
-print(settings.POSTGRES_HOST)
-print(settings.POSTGRES_PORT)
-print(settings.POSTGRES_DB)
-print(settings.POSTGRES_USER)
-print(settings.POSTGRES_PASSWORD)
-print(settings.DATABASE_URL)
-print("=" * 60)
-
 engine = create_engine(
     settings.DATABASE_URL,
     echo=settings.DEBUG,
