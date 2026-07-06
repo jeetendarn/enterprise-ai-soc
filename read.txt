@@ -2,5 +2,13 @@ source .venv/bin/activate
 
 uvicorn app.main:app --reload
 
-jeetendarn
-528D-A26F
+{
+  "email": "john@example.com",
+  "username": "john",
+  "password": "Password123!"
+}
+
+{
+  "email": "john@example.com",
+  "password": "Password123!"
+}

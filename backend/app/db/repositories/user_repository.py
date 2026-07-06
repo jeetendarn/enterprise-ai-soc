@@ -2,7 +2,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.db.models import User
-
+# from app.auth.repository import AuthRepository
 
 class UserRepository:
 

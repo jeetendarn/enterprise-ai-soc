@@ -1,7 +1,7 @@
 from app.db.session import SessionLocal
 from app.users.schemas import UserCreate
 from app.users.service import UserService
-
+from app.auth.service import AuthService
 db = SessionLocal()
 
 service = UserService(db)

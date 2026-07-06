@@ -11,6 +11,8 @@ from app.core.middleware.request_id import add_request_id
 from app.core.middleware.request_logger import log_requests
 
 from app.core.config import settings
+from app.auth.router import router as auth_router
+from app.users.router import router as users_router
 
 print(settings.DATABASE_URL)
 
@@ -107,4 +109,7 @@ app.include_router(
     api_router,
     prefix="/api/v1",
 )
+
+app.include_router(auth_router)
+app.include_router(users_router)
 
