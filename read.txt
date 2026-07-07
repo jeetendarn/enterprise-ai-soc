@@ -41,3 +41,14 @@ sudo -u postgres psql -d enterprise_ai_soc
       └────────────┬────────────┘
                    │
              PostgreSQL
+
+
+feat(auth): implement JWT authentication
+
+feat(users): add user registration service
+
+feat(assets): implement complete asset CRUD
+
+refactor(auth): migrate password hashing to Argon2
+
+docs: update backend roadmap
