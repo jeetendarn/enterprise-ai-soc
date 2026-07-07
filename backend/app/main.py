@@ -13,6 +13,7 @@ from app.core.middleware.request_logger import log_requests
 from app.core.config import settings
 from app.auth.router import router as auth_router
 from app.users.router import router as users_router
+from app.threats.router import router as threat_router
 
 print(settings.DATABASE_URL)
 
@@ -112,4 +113,7 @@ app.include_router(
 
 app.include_router(auth_router)
 app.include_router(users_router)
-
+app.include_router(
+    threat_router,
+    prefix="/api/v1"
+)
