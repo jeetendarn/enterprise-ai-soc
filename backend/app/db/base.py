@@ -4,7 +4,10 @@ from sqlalchemy import DateTime, func
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
-
+# from app.users.models import User
+# from app.assets.models import Asset
+# from app.threats.models import Threat
+# from app.incidents.models import Incident
 
 class Base(DeclarativeBase):
     pass
