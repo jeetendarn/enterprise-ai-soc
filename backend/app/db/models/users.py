@@ -4,6 +4,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import BaseModel
 
+from sqlalchemy.orm import relationship
 
 class User(BaseModel):
 
@@ -37,3 +38,8 @@ class User(BaseModel):
         default=True,
         server_default=text("true"),
     )
+
+    incidents = relationship(
+    "Incident",
+    back_populates="user",
+)

@@ -46,12 +46,20 @@ class Incident(BaseModel):
         nullable=True,
     )
 
-    asset = relationship("Asset")
+    asset = relationship(
+        "Asset",
+        back_populates="incidents",
+    )
 
-    user = relationship("User")
+    user = relationship(
+        "User",
+        back_populates="incidents",
+    )
 
-    threat = relationship("Threat")
-
+    threat = relationship(
+        "Threat",
+        back_populates="incidents",
+    )
     events = relationship(
     "IncidentEvent",
     back_populates="incident",

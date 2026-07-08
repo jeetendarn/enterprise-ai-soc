@@ -4,6 +4,7 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
 from app.db.base import BaseModel
+from sqlalchemy.orm import relationship
 
 
 class Threat(BaseModel):
@@ -51,3 +52,8 @@ class Threat(BaseModel):
         nullable=False,
         default="Active",
     )
+
+    incidents = relationship(
+    "Incident",
+    back_populates="threat",
+)

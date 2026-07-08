@@ -5,6 +5,7 @@ from sqlalchemy.orm import mapped_column
 
 from app.db.base import BaseModel
 
+from sqlalchemy.orm import relationship
 
 class Asset(BaseModel):
 
@@ -53,3 +54,8 @@ class Asset(BaseModel):
         nullable=False,
         default="Online",
     )
+
+    incidents = relationship(
+    "Incident",
+    back_populates="asset",
+)
