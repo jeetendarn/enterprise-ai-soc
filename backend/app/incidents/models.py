@@ -64,4 +64,10 @@ class Incident(BaseModel):
     "IncidentEvent",
     back_populates="incident",
     cascade="all, delete-orphan",
+
+
+)
+    cases = relationship(
+    "Case",
+    back_populates="incident",
 )
