@@ -15,6 +15,8 @@ from app.auth.router import router as auth_router
 from app.users.router import router as users_router
 from app.threats.router import router as threat_router
 
+from app.ioc_matching.router import router as ioc_router
+
 print(settings.DATABASE_URL)
 
 @asynccontextmanager
@@ -116,4 +118,9 @@ app.include_router(users_router)
 app.include_router(
     threat_router,
     prefix="/api/v1"
+)
+
+app.include_router(
+    ioc_router,
+    prefix="/api/v1",
 )
