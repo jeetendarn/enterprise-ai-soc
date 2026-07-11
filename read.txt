@@ -52,3 +52,40 @@ feat(assets): implement complete asset CRUD
 refactor(auth): migrate password hashing to Argon2
 
 docs: update backend roadmap
+
+
+
+
+src
+├── App.tsx
+├── main.tsx
+├── router
+│   └── AppRouter.tsx
+├── layouts
+│   └── DashboardLayout.tsx
+├── components
+│   ├── sidebar
+│   │   └── Sidebar.tsx
+│   └── navbar
+│       └── Navbar.tsx
+└── pages
+    ├── Dashboard
+    │   └── Dashboard.tsx
+    ├── Assets
+    │   └── Assets.tsx
+    ├── Threats
+    │   └── Threats.tsx
+    ├── Incidents
+    │   └── Incidents.tsx
+    ├── Cases
+    │   └── Cases.tsx
+    ├── IOC
+    │   └── IOC.tsx
+    ├── Users
+    │   └── Users.tsx
+    ├── Login
+    │   └── Login.tsx
+    ├── Settings
+    │   └── Settings.tsx
+    └── NotFound
+        └── NotFound.tsx
