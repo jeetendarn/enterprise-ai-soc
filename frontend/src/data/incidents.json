@@ -1,0 +1,29 @@
+[
+    {
+        "id": "INC-1001",
+        "title": "Ransomware Detected",
+        "severity": "Critical",
+        "status": "Open",
+        "assignedTo": "Alice",
+        "source": "CrowdStrike",
+        "time": "5 mins ago"
+    },
+    {
+        "id": "INC-1002",
+        "title": "Brute Force Attack",
+        "severity": "High",
+        "status": "Investigating",
+        "assignedTo": "Bob",
+        "source": "Wazuh",
+        "time": "30 mins ago"
+    },
+    {
+        "id": "INC-1003",
+        "title": "PowerShell Abuse",
+        "severity": "Medium",
+        "status": "Resolved",
+        "assignedTo": "John",
+        "source": "Microsoft Defender",
+        "time": "1 hour ago"
+    }
+]

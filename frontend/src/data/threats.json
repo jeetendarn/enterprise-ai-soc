@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "name": "Ransomware Activity",
+        "severity": "Critical",
+        "status": "Open",
+        "source": "CrowdStrike",
+        "mitre": "T1486",
+        "confidence": 98
+    },
+    {
+        "id": 2,
+        "name": "PowerShell Abuse",
+        "severity": "Medium",
+        "status": "Investigating",
+        "source": "Microsoft Defender",
+        "mitre": "T1059",
+        "confidence": 91
+    },
+    {
+        "id": 3,
+        "name": "Brute Force",
+        "severity": "High",
+        "status": "Resolved",
+        "source": "Wazuh",
+        "mitre": "T1110",
+        "confidence": 94
+    }
+]
