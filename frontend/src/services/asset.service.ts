@@ -1,97 +1,38 @@
-export interface Asset{
+import api from "../api/axios";
+import { API } from "../api/endpoints";
 
-    id:number;
-
-    hostname:string;
-
-    ip:string;
-
-    os:string;
-
-    owner:string;
-
-    criticality:string;
-
-    status:string;
-
-    risk:number;
-
-    lastSeen:string;
-
+export interface Asset {
+    id: number;
+    hostname: string;
+    ip: string;
+    os: string;
+    owner: string;
+    criticality: string;
+    status: string;
+    risk: number;
+    last_seen: string;
 }
 
-const assets:Asset[]=[
+export const AssetService = {
 
-{
+    async getAll() {
+        const res = await api.get(API.assets);
+        return res.data;
+    },
 
-id:1,
+    async create(data: Partial<Asset>) {
+        const res = await api.post(API.assets, data);
+        return res.data;
+    },
 
-hostname:"DC-01",
+    async update(id: number, data: Partial<Asset>) {
+        const res = await api.put(`${API.assets}/${id}`, data);
+        return res.data;
+    },
 
-ip:"192.168.10.5",
+    async delete(id: number) {
+        const res = await api.delete(`${API.assets}/${id}`);
+        return res.data;
+    }
 
-os:"Windows Server",
-
-owner:"IT",
-
-criticality:"Critical",
-
-status:"Online",
-
-risk:94,
-
-lastSeen:"1 min ago"
-
-},
-
-{
-
-id:2,
-
-hostname:"FIN-LAPTOP-12",
-
-ip:"192.168.10.54",
-
-os:"Windows 11",
-
-owner:"Finance",
-
-criticality:"High",
-
-status:"Online",
-
-risk:71,
-
-lastSeen:"4 mins ago"
-
-},
-
-{
-
-id:3,
-
-hostname:"Ubuntu-Web-02",
-
-ip:"10.0.0.15",
-
-os:"Ubuntu",
-
-owner:"DevOps",
-
-criticality:"Medium",
-
-status:"Offline",
-
-risk:38,
-
-lastSeen:"1 hour ago"
-
-}
-
-];
-
-export async function getAssets(){
-
-return Promise.resolve(assets);
-
-}
+};

@@ -1,107 +1,82 @@
-import { useEffect,useState } from "react";
-
-import { Plus,Search } from "lucide-react";
+import { useState } from "react";
+import { Plus, Search } from "lucide-react";
 
 import AssetStats from "../../components/cards/AssetStats";
-
 import AssetsTable from "../../components/tables/AssetsTable";
-
-import { getAssets } from "../../services/asset.service";
+import { useAssets } from "../../hooks/useAssets";
 import type { Asset } from "../../services/asset.service";
-export default function Assets(){
 
-const [assets,setAssets]=useState<Asset[]>([]);
+export default function Assets() {
 
-const [search,setSearch]=useState("");
+    const [search, setSearch] = useState("");
 
-useEffect(()=>{
+    const {
+        data = [],
+        isLoading,
+    } = useAssets();
 
-getAssets().then(setAssets);
+    // Backend returns { assets: [...] }
+    const assets: Asset[] = data.assets ?? [];
 
-},[]);
+    const filtered = assets.filter((asset) =>
+        asset.hostname.toLowerCase().includes(search.toLowerCase()) ||
+        asset.owner.toLowerCase().includes(search.toLowerCase())
+    );
 
-const filtered=assets.filter(asset=>
+    if (isLoading) {
+        return <div className="text-white p-10">Loading Assets...</div>;
+    }
 
-asset.hostname.toLowerCase().includes(search.toLowerCase()) ||
+    return (
+        <div className="space-y-8">
 
-asset.owner.toLowerCase().includes(search.toLowerCase())
+            <div className="flex justify-between items-center">
 
-);
+                <div>
+                    <h1 className="text-3xl font-bold">
+                        Asset Inventory
+                    </h1>
 
-return(
+                    <p className="text-gray-400">
+                        Enterprise Endpoint Inventory
+                    </p>
+                </div>
 
-<div className="space-y-8">
+                <button className="bg-cyan-500 hover:bg-cyan-600 px-5 py-3 rounded-lg flex gap-2">
+                    <Plus />
+                    Add Asset
+                </button>
 
-<div className="flex justify-between items-center">
+            </div>
 
-<div>
+            <div className="grid grid-cols-4 gap-6">
 
-<h1 className="text-3xl font-bold">
+                <AssetStats title="Total Assets" value={assets.length} color="text-cyan-400" />
+                <AssetStats title="Online" value={0} color="text-green-400" />
+                <AssetStats title="Offline" value={0} color="text-red-400" />
+                <AssetStats title="Critical" value={0} color="text-orange-400" />
 
-Asset Inventory
+            </div>
 
-</h1>
+            <div className="bg-[#132034] rounded-xl p-5">
 
-<p className="text-gray-400">
+                <div className="flex items-center gap-3 mb-5">
 
-Enterprise endpoint inventory
+                    <Search size={18} />
 
-</p>
+                    <input
+                        className="bg-[#0b1627] p-3 rounded-lg w-80 outline-none"
+                        placeholder="Search hostname..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
 
-</div>
+                </div>
 
-<button className="bg-cyan-500 hover:bg-cyan-600 px-5 py-3 rounded-lg flex gap-2">
+                <AssetsTable data={filtered} />
 
-<Plus/>
+            </div>
 
-Add Asset
-
-</button>
-
-</div>
-
-<div className="grid grid-cols-4 gap-6">
-
-<AssetStats title="Total Assets" value={1543} color="text-cyan-400"/>
-
-<AssetStats title="Online" value={1450} color="text-green-400"/>
-
-<AssetStats title="Offline" value={93} color="text-red-400"/>
-
-<AssetStats title="Critical" value={58} color="text-orange-400"/>
-
-</div>
-
-<div className="bg-[#132034] rounded-xl p-5">
-
-<div className="flex items-center gap-3 mb-5">
-
-<Search size={18}/>
-
-<input
-
-className="bg-[#0b1627] p-3 rounded-lg w-80 outline-none"
-
-placeholder="Search hostname..."
-
-value={search}
-
-onChange={e=>setSearch(e.target.value)}
-
-/>
-
-</div>
-
-<AssetsTable
-
-data={filtered}
-
-/>
-
-</div>
-
-</div>
-
-);
-
+        </div>
+    );
 }

@@ -63,13 +63,11 @@ def list_assets(
 
 
 @router.get(
-    "/{asset_id}",
-    response_model=AssetResponse,
+    "",
+    response_model=AssetList,
 )
-def get_asset(
-    asset_id: int,
+def list_assets(
     db: Session = Depends(get_db),
-    current_user=Depends(get_current_user),
 ):
 
     service = AssetService(db)
