@@ -1,44 +1,32 @@
-import StatCard from "../../components/cards/StatCard";
+import KPISection from "../../components/dashboard/KPISection";
 import ChartsSection from "../../components/dashboard/ChartsSection";
 import IncidentSection from "../../components/dashboard/IncidentSection";
 import ThreatFeed from "../../components/dashboard/ThreatFeed";
 
-export default function Dashboard(){
+export default function Dashboard() {
 
-return(
+    return (
 
-<>
+        <>
 
-<h1
-style={{
-marginBottom:30
-}}
->
+            <h1
+                style={{
+                    marginBottom: 30,
+                }}
+            >
+                SOC Dashboard
+            </h1>
 
-SOC Dashboard
+            <KPISection />
 
-</h1>
+            <ChartsSection />
 
-<div className="stats">
+            <IncidentSection />
 
-<StatCard title="Threats" value="328" color="#00d4ff"/>
+            <ThreatFeed />
 
-<StatCard title="Incidents" value="91" color="#ff4d6d"/>
+        </>
 
-<StatCard title="Cases" value="41" color="#ff9800"/>
-
-<StatCard title="Assets" value="1203" color="#00e29b"/>
-
-</div>
-
-<ChartsSection/>
-
-<IncidentSection/>
-
-<ThreatFeed/>
-
-</>
-
-);
+    );
 
 }

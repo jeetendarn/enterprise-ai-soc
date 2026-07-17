@@ -41,6 +41,8 @@ from app.api.routes.database import router as database_router
 from app.auth.router import router as auth_router
 from app.users.router import router as users_router
 from app.assets.router import router as assets_router
+from app.dashboard.router import router as dashboard_router
+
 
 api_router = APIRouter()
 
@@ -49,3 +51,4 @@ api_router.include_router(database_router)
 api_router.include_router(auth_router)
 api_router.include_router(users_router)
 api_router.include_router(assets_router)
+api_router.include_router(dashboard_router)

@@ -1,0 +1,43 @@
+import api from "../api/axios";
+
+export interface DashboardSummary {
+
+    total_assets:number;
+
+    online_assets:number;
+
+    total_incidents:number;
+
+    open_incidents:number;
+
+    total_threats:number;
+
+    active_threats:number;
+
+    total_cases:number;
+
+    open_cases:number;
+
+}
+
+export const DashboardService={
+
+    async summary(){
+
+        const res=await api.get("/dashboard/summary");
+
+        return res.data;
+
+    },
+    
+async threatTrend(){
+
+    const res=await api.get(
+        "/dashboard/threat-trend"
+    );
+
+    return res.data;
+
+},
+
+};

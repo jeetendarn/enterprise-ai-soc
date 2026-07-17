@@ -42,7 +42,7 @@ class ThreatResponse(BaseModel):
     source: str
     status: str
 
-
 class ThreatList(BaseModel):
 
     threats: list[ThreatResponse]
+

@@ -1,32 +1,14 @@
-import { useEffect,useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { ThreatService } from "../services/threat.service";
 
+export function useThreats() {
 
-import type { Threat } from "../types/threat";
+    return useQuery({
 
-import { getThreats } from "../services/threatService";
+        queryKey: ["threats"],
 
-export function useThreats(){
+        queryFn: ThreatService.getAll,
 
-const [threats,setThreats]=useState<Threat[]>([]);
-
-const [loading,setLoading]=useState(true);
-
-useEffect(()=>{
-
-getThreats()
-
-.then(setThreats)
-
-.finally(()=>setLoading(false));
-
-},[]);
-
-return{
-
-threats,
-
-loading,
-
-};
+    });
 
 }

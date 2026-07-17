@@ -1,7 +1,17 @@
 import { Search, Plus, Download } from "lucide-react";
 
-export default function ThreatToolbar() {
+interface Props {
+    search: string;
+    setSearch: (value: string) => void;
+}
+
+export default function ThreatToolbar({
+    search,
+    setSearch,
+}: Props) {
+
     return (
+
         <div className="toolbar">
 
             <div className="toolbar-search">
@@ -11,6 +21,8 @@ export default function ThreatToolbar() {
                 <input
                     type="text"
                     placeholder="Search threats..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
 
             </div>
@@ -36,5 +48,7 @@ export default function ThreatToolbar() {
             </div>
 
         </div>
+
     );
+
 }

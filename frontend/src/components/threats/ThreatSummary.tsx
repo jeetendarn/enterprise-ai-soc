@@ -1,53 +1,48 @@
 import ThreatCard from "./ThreatCard";
 
-export default function ThreatSummary(){
+interface Props {
+    threats: any[];
+}
 
-return(
+export default function ThreatSummary({
+    threats,
+}: Props) {
 
-<div className="threat-summary">
+    const critical = threats.filter(t => t.severity === "Critical").length;
+    const high = threats.filter(t => t.severity === "High").length;
+    const medium = threats.filter(t => t.severity === "Medium").length;
+    const low = threats.filter(t => t.severity === "Low").length;
 
-<ThreatCard
+    return (
 
-title="Critical"
+        <div className="threat-summary">
 
-count={12}
+            <ThreatCard
+                title="Critical"
+                count={critical}
+                color="#ef4444"
+            />
 
-color="#ef4444"
+            <ThreatCard
+                title="High"
+                count={high}
+                color="#f97316"
+            />
 
-/>
+            <ThreatCard
+                title="Medium"
+                count={medium}
+                color="#eab308"
+            />
 
-<ThreatCard
+            <ThreatCard
+                title="Low"
+                count={low}
+                color="#22c55e"
+            />
 
-title="High"
+        </div>
 
-count={33}
-
-color="#f97316"
-
-/>
-
-<ThreatCard
-
-title="Medium"
-
-count={61}
-
-color="#eab308"
-
-/>
-
-<ThreatCard
-
-title="Low"
-
-count={188}
-
-color="#22c55e"
-
-/>
-
-</div>
-
-)
+    );
 
 }

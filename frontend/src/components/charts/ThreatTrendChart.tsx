@@ -1,36 +1,54 @@
 import {
-    ResponsiveContainer,
-    LineChart,
-    Line,
-    CartesianGrid,
-    Tooltip,
-    XAxis,
-    YAxis,
+
+ResponsiveContainer,
+LineChart,
+Line,
+XAxis,
+YAxis,
+Tooltip,
+CartesianGrid,
+
 } from "recharts";
 
-const data = [
-    { day: "Mon", threats: 40 },
-    { day: "Tue", threats: 65 },
-    { day: "Wed", threats: 32 },
-    { day: "Thu", threats: 90 },
-    { day: "Fri", threats: 71 },
-    { day: "Sat", threats: 110 },
-    { day: "Sun", threats: 84 },
-];
+import { useThreatTrend } from "../../hooks/useThreatTrend";
 
-export default function ThreatTrendChart() {
+export default function ThreatTrendChart(){
 
-    return (
+    const{
+
+        data=[],
+
+        isLoading,
+
+    }=useThreatTrend();
+
+    if(isLoading){
+
+        return <h3>Loading...</h3>;
+
+    }
+
+    return(
 
         <div className="chart-card">
 
-            <h3>Threat Trend</h3>
+            <h3>
 
-            <ResponsiveContainer width="100%" height={300}>
+                Threat Trend
+
+            </h3>
+
+            <ResponsiveContainer
+
+                width="100%"
+
+                height={300}
+
+            >
 
                 <LineChart data={data}>
 
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid strokeDasharray="3 3"/>
 
                     <XAxis dataKey="day"/>
 

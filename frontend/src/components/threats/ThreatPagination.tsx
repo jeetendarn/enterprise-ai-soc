@@ -1,27 +1,40 @@
-export default function ThreatPagination() {
+import SeverityBadge from "../cards/SeverityBadge";
+import ThreatStatusBadge from "./ThreatStatusBadge";
+interface Props {
+    total: number;
+}
+
+export default function ThreatPagination({
+    total,
+}: Props) {
 
     return (
 
         <div
-            style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                marginTop: 20,
-                gap: 10,
-            }}
+            className="flex justify-between items-center mt-6"
         >
 
-            <button className="primary-btn">
+            <span className="text-gray-400">
 
-                Previous
+                Total Threats: {total}
 
-            </button>
+            </span>
 
-            <button className="primary-btn">
+            <div className="flex gap-3">
 
-                Next
+                <button className="primary-btn">
 
-            </button>
+                    Previous
+
+                </button>
+
+                <button className="primary-btn">
+
+                    Next
+
+                </button>
+
+            </div>
 
         </div>
 
