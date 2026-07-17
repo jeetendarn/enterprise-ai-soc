@@ -1,48 +1,122 @@
-const feeds=[
+import { ShieldAlert } from "lucide-react";
 
-"Malware detected on Endpoint-14",
+import { useRecentThreats } from "../../hooks/useRecentThreats";
 
-"Brute Force attack blocked",
+export default function ThreatFeed() {
 
-"New IOC imported",
+    const {
 
-"Firewall policy updated",
+        data = [],
 
-"Suspicious login detected",
+        isLoading,
 
-];
+    } = useRecentThreats();
 
-export default function ThreatFeed(){
+    return (
 
-return(
+        <div className="feed-card">
 
-<div className="feed-card">
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: 20,
+                }}
+            >
 
-<h3>
+                <h3>
 
-Live Threat Feed
+                    Live Threat Feed
 
-</h3>
+                </h3>
 
-{
+                <span
+                    style={{
+                        color: "#22c55e",
+                        fontSize: 13,
+                    }}
+                >
 
-feeds.map((item)=>
+                    ● Live
 
-<div
-key={item}
-className="feed-item"
->
+                </span>
 
-🟢 {item}
+            </div>
 
-</div>
+            {
 
-)
+                isLoading ?
 
-}
+                (
 
-</div>
+                    <p>
 
-);
+                        Loading...
+
+                    </p>
+
+                )
+
+                :
+
+                data.length === 0 ?
+
+                (
+
+                    <p>
+
+                        No Threats
+
+                    </p>
+
+                )
+
+                :
+
+                data.map((item:any)=>(
+
+                    <div
+
+                        key={item.id}
+
+                        className="feed-item"
+
+                    >
+
+                        <ShieldAlert
+                            size={16}
+                            color="#ef4444"
+                        />
+
+                        <div>
+
+                            <div>
+
+                                {item.name}
+
+                            </div>
+
+                            <small
+                                style={{
+                                    color:"#94a3b8",
+                                }}
+                            >
+
+                                {item.source}
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                ))
+
+            }
+
+        </div>
+
+    );
 
 }

@@ -1,8 +1,8 @@
-import { AlertTriangle } from "lucide-react";
+import { FolderKanban } from "lucide-react";
 
-import { useRecentIncidents } from "../../hooks/useRecentIncidents";
+import { useRecentCases } from "../../hooks/useRecentCases";
 
-export default function RecentIncidents(){
+export default function RecentCases(){
 
     const{
 
@@ -10,7 +10,7 @@ export default function RecentIncidents(){
 
         isLoading,
 
-    }=useRecentIncidents();
+    }=useRecentCases();
 
     return(
 
@@ -26,18 +26,18 @@ export default function RecentIncidents(){
 
                 <h3>
 
-                    Recent Incidents
+                    Recent Cases
 
                 </h3>
 
                 <span
                     style={{
-                        color:"#00d4ff",
+                        color:"#22c55e",
                         fontSize:13,
                     }}
                 >
 
-                    Updated
+                    Live
 
                 </span>
 
@@ -47,29 +47,13 @@ export default function RecentIncidents(){
 
                 isLoading?
 
-                (
-
-                    <p>
-
-                        Loading...
-
-                    </p>
-
-                )
+                <p>Loading...</p>
 
                 :
 
                 data.length===0?
 
-                (
-
-                    <p>
-
-                        No Incidents
-
-                    </p>
-
-                )
+                <p>No Cases</p>
 
                 :
 
@@ -83,11 +67,11 @@ export default function RecentIncidents(){
 
                     >
 
-                        <AlertTriangle
+                        <FolderKanban
 
                             size={16}
 
-                            color="#f97316"
+                            color="#00d4ff"
 
                         />
 
@@ -105,7 +89,7 @@ export default function RecentIncidents(){
                                 }}
                             >
 
-                                {item.status}
+                                {item.priority} • {item.status}
 
                             </small>
 

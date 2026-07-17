@@ -763,3 +763,29 @@ body{
     background:#07111f;
 
 }
+
+.feed-item{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:14px;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+transition:.25s;
+
+}
+
+.feed-item:hover{
+
+background:#17263d;
+
+cursor:pointer;
+
+border-radius:8px;
+
+}

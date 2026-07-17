@@ -48,4 +48,34 @@ async severity(){
 
 },
 
+async recentThreats() {
+
+    const res = await api.get(
+        "/dashboard/recent-threats"
+    );
+
+    return res.data;
+
+},
+
+async recentIncidents(){
+
+    const res=await api.get(
+        "/dashboard/recent-incidents"
+    );
+
+    return res.data;
+
+},
+
+async recentCases(){
+
+    const res=await api.get(
+        "/dashboard/recent-cases"
+    );
+
+    return res.data;
+
+},
+
 };
