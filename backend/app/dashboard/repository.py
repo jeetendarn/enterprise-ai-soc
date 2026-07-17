@@ -86,3 +86,35 @@ class DashboardRepository:
             })
 
         return result
+    
+    def severity_distribution(self):
+
+        rows=(
+
+            self.db.query(
+
+                Threat.severity,
+
+                func.count(Threat.id),
+
+            )
+
+            .group_by(Threat.severity)
+
+            .all()
+
+        )
+
+        return [
+
+            {
+
+                "name":severity,
+
+                "value":count,
+
+            }
+
+            for severity,count in rows
+
+        ]

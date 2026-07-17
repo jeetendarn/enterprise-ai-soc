@@ -1,85 +1,109 @@
-import {
+import{
 
 PieChart,
-
 Pie,
-
 Cell,
-
 ResponsiveContainer,
+Tooltip,
 
-} from "recharts";
+}from "recharts";
 
-const data=[
+import { useSeverityChart } from "../../hooks/useSeverityChart";
 
-{name:"Critical",value:35},
+const colors={
 
-{name:"High",value:28},
+Critical:"#ff4d6d",
 
-{name:"Medium",value:18},
+High:"#ff9800",
 
-{name:"Low",value:19},
+Medium:"#ffd54f",
 
-];
+Low:"#00d4ff",
 
-const colors=[
-
-"#ff4d6d",
-
-"#ff9800",
-
-"#ffd54f",
-
-"#00d4ff",
-
-];
+};
 
 export default function ThreatSeverityChart(){
 
-return(
+    const{
 
-<div className="chart-card">
+        data=[],
 
-<h3>Threat Severity</h3>
+        isLoading,
 
-<ResponsiveContainer
-width="100%"
-height={300}
->
+    }=useSeverityChart();
 
-<PieChart>
+    if(isLoading){
 
-<Pie
+        return <h3>Loading...</h3>;
 
-data={data}
+    }
 
-dataKey="value"
+    return(
 
-outerRadius={100}
+        <div className="chart-card">
 
->
+            <h3>
 
-{
+                Threat Severity
 
-data.map((_,i)=>
+            </h3>
 
-<Cell
-key={i}
-fill={colors[i]}
-/>
+            <ResponsiveContainer
 
-)
+                width="100%"
 
-}
+                height={300}
 
-</Pie>
+            >
 
-</PieChart>
+                <PieChart>
 
-</ResponsiveContainer>
+                    <Pie
 
-</div>
+                        data={data}
 
-);
+                        dataKey="value"
+
+                        nameKey="name"
+
+                        outerRadius={100}
+
+                    >
+
+                        {
+
+                            data.map((item:any,index:number)=>
+
+                                <Cell
+
+                                    key={index}
+
+                                    fill={
+
+                                        colors[item.name as keyof typeof colors]
+
+                                        ||
+
+                                        "#8884d8"
+
+                                    }
+
+                                />
+
+                            )
+
+                        }
+
+                    </Pie>
+
+                    <Tooltip/>
+
+                </PieChart>
+
+            </ResponsiveContainer>
+
+        </div>
+
+    );
 
 }

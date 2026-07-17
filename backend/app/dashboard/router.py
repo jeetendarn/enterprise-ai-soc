@@ -11,6 +11,7 @@ from app.dashboard.schemas import DashboardSummary
 from app.dashboard.service import DashboardService
 
 from app.dashboard.chart_schemas import ThreatTrendPoint
+from app.dashboard.severity_schemas import SeverityChartItem
 
 router = APIRouter(
     prefix="/dashboard",
@@ -42,3 +43,15 @@ def threat_trend(
     service = DashboardService(db)
 
     return service.threat_trend()
+
+@router.get(
+    "/severity",
+    response_model=list[SeverityChartItem],
+)
+def severity_distribution(
+    db: Session = Depends(get_db),
+):
+
+    service=DashboardService(db)
+
+    return service.severity_distribution()

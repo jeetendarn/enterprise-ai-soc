@@ -40,4 +40,12 @@ async threatTrend(){
 
 },
 
+async severity(){
+
+    const res=await api.get("/dashboard/severity");
+
+    return res.data;
+
+},
+
 };

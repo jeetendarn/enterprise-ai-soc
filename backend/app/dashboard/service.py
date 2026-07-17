@@ -12,3 +12,7 @@ class DashboardService:
     def threat_trend(self):
 
         return self.repo.threat_trend()
+    
+    def severity_distribution(self):
+
+        return self.repo.severity_distribution()
