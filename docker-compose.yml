@@ -1,65 +1,46 @@
-version: "3.9"
-
 services:
 
   postgres:
-
     image: postgres:17
-
     container_name: soc-postgres
-
-    restart: always
-
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_DB: enterprise_ai_soc
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-
-    ports:
-      - "5432:5432"
-
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   backend:
-
-    build:
-      context: ./backend
-
+    build: ./backend
     container_name: soc-backend
-
-    restart: always
 
     ports:
       - "8000:8000"
 
-    depends_on:
-      - postgres
-
     env_file:
       - ./backend/.env
 
-    volumes:
-      - ./backend:/app
+    depends_on:
+      - postgres
 
   frontend:
-
-    build:
-      context: ./frontend
-
+    build: ./frontend
     container_name: soc-frontend
-
-    restart: always
-
     ports:
       - "5173:5173"
-
     depends_on:
       - backend
 
-    volumes:
-      - ./frontend:/app
+  nginx:
+    build: ./nginx
+    container_name: soc-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
 
 volumes:
-
   postgres_data:
