@@ -16,6 +16,8 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 from app.db.base import Base
+from app.core.config import settings
+from sqlalchemy import create_engine
 import app.db.models
 from app.db.models import *
 
@@ -39,9 +41,8 @@ def run_migrations_offline():
 
 def run_migrations_online():
 
-    connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
-        prefix="sqlalchemy.",
+    connectable = create_engine(
+        settings.DATABASE_URL,
         poolclass=pool.NullPool,
     )
 
