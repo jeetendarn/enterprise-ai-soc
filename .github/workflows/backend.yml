@@ -4,15 +4,12 @@ on:
   push:
     branches:
       - main
-
-pull_request:
+  pull_request:
     branches:
       - main
 
 jobs:
-
   backend:
-
     runs-on: ubuntu-latest
 
     defaults:
@@ -20,14 +17,14 @@ jobs:
         working-directory: backend
 
     steps:
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
-
         with:
           python-version: "3.14"
 
-      - run: pip install -r requirements.txt
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
 
-      - run: python -m compileall .
+      - name: Check Python Compilation
+        run: python -m compileall .
