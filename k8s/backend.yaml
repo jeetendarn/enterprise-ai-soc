@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: backend
+  namespace: enterprise-ai-soc
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+
+    metadata:
+      labels:
+        app: backend
+
+    spec:
+
+      containers:
+
+      - name: backend
+
+        image: jeetendarn/enterprise-ai-soc-backend:v1
+
+        imagePullPolicy: Always
+
+        ports:
+
+        - containerPort: 8000
+
+        env:
+
+        - name: POSTGRES_HOST
+          value: postgres
+
+        - name: POSTGRES_PORT
+          value: "5432"
+
+        - name: POSTGRES_DB
+          value: enterprise_ai_soc
+
+        - name: POSTGRES_USER
+          value: postgres
+
+        - name: POSTGRES_PASSWORD
+          value: postgres
+
+---
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+  name: backend
+
+  namespace: enterprise-ai-soc
+
+spec:
+
+  selector:
+    app: backend
+
+  ports:
+
+  - port: 8000
+
+    targetPort: 8000
