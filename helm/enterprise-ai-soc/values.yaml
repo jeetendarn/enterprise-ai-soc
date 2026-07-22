@@ -159,3 +159,36 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+namespace: enterprise-ai-soc
+
+backend:
+  image:
+    repository: jeetendarn/enterprise-ai-soc-backend
+    tag: v1
+  replicas: 1
+  port: 8000
+
+frontend:
+  image:
+    repository: jeetendarn/enterprise-ai-soc-frontend
+    tag: v1
+  replicas: 1
+  port: 5173
+
+nginx:
+  image:
+    repository: jeetendarn/enterprise-ai-soc-nginx
+    tag: v1
+  replicas: 1
+  port: 80
+  nodePort: 31175
+
+postgres:
+  image:
+    repository: postgres
+    tag: "17"
+  port: 5432
+  database: enterprise_ai_soc
+  username: postgres
+  password: postgres
