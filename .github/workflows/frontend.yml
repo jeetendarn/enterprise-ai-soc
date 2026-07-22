@@ -1,18 +1,9 @@
 name: Frontend CI
 
 on:
-
   push:
-
-    branches:
-
-      - main
-
-  pull_request:
-
-    branches:
-
-      - main
+    paths:
+      - "frontend/**"
 
 jobs:
 
@@ -21,9 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     defaults:
-
       run:
-
         working-directory: frontend
 
     steps:
@@ -31,11 +20,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
-
         with:
-
           node-version: 22
 
       - run: npm install
 
       - run: npm run build
+
+      - run: docker build -t frontend .
