@@ -2,6 +2,10 @@ name: Security Scan
 
 on:
   push:
+    branches:
+      - main
+
+  pull_request:
 
 jobs:
 
@@ -13,14 +17,26 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Install Bandit
-        run: pip install bandit
+      - name: Build Backend Image
+        run: |
+          docker build -t enterprise-ai-soc-backend ./backend
 
-      - name: Run Bandit
-        run: bandit -r backend || true
+      - name: Trivy Backend Scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: enterprise-ai-soc-backend
+          format: table
+          exit-code: 0
+          severity: CRITICAL,HIGH
 
-      - name: Install Semgrep
-        run: pip install semgrep
+      - name: Filesystem Scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scan-ref: .
 
-      - name: Run Semgrep
-        run: semgrep scan --config auto backend || true
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: .
