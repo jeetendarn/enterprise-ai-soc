@@ -4,39 +4,29 @@ on:
   push:
     branches:
       - main
-
   pull_request:
 
 jobs:
-
   security:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
 
       - name: Build Backend Image
+        run: docker build -t enterprise-ai-soc-backend ./backend
+
+      - name: Install Trivy
         run: |
-          docker build -t enterprise-ai-soc-backend ./backend
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.65.0_Linux-64bit.deb
+          sudo dpkg -i trivy_0.65.0_Linux-64bit.deb
 
-      - name: Trivy Backend Scan
-        uses: aquasecurity/trivy-action@v0
-        with:
-          image-ref: enterprise-ai-soc-backend
-          format: table
-          exit-code: 0
-          severity: CRITICAL,HIGH
+      - name: Scan Docker Image
+        run: |
+          trivy image enterprise-ai-soc-backend
 
-      - name: Filesystem Scan
-        uses: aquasecurity/trivy-action@v0
-        with:
-          scan-type: fs
-          scan-ref: .
-
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: trivy-report
-          path: .
+      - name: Scan Filesystem
+        run: |
+          trivy fs .
