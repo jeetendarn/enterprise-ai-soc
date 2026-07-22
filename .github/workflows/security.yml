@@ -22,7 +22,7 @@ jobs:
           docker build -t enterprise-ai-soc-backend ./backend
 
       - name: Trivy Backend Scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0
         with:
           image-ref: enterprise-ai-soc-backend
           format: table
@@ -30,7 +30,7 @@ jobs:
           severity: CRITICAL,HIGH
 
       - name: Filesystem Scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0
         with:
           scan-type: fs
           scan-ref: .
