@@ -1,59 +1,35 @@
-# =========================
 # Python
-# =========================
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
-*.so
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-
-# Virtual Environment
 .venv/
 venv/
-env/
 
-# Environment Variables
+# Environment
 .env
 
-# Logs
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+.terraform.lock.hcl
+
+# Grafana
+monitoring/grafana-data/
+
+# Prometheus
+monitoring/prometheus-data/
+
+# Loki
+monitoring/loki-data/
+
+# Docker
 *.log
 
-# Coverage
-.coverage
-htmlcov/
-
-# =========================
 # VS Code
-# =========================
 .vscode/
 
-# =========================
-# JetBrains
-# =========================
-.idea/
-
-# =========================
-# macOS
-# =========================
+# OS
 .DS_Store
-
-# =========================
-# Linux
-# =========================
-*~
-
-# =========================
-# Node
-# =========================
-frontend/node_modules/
-
-# React Build
-frontend/dist/
-
-# =========================
-# Docker
-# =========================
-*.pid
