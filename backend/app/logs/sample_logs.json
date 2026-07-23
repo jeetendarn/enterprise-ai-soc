@@ -1,0 +1,30 @@
+[
+    {
+        "timestamp": "2026-07-23T10:00:00",
+        "source_ip": "192.168.1.20",
+        "destination_ip": "8.8.8.8",
+        "event": "DNS Query",
+        "severity": "Low"
+    },
+    {
+        "timestamp": "2026-07-23T10:05:00",
+        "source_ip": "10.10.1.12",
+        "destination_ip": "185.199.108.153",
+        "event": "SSH Login Failed",
+        "severity": "Medium"
+    },
+    {
+        "timestamp": "2026-07-23T10:15:00",
+        "source_ip": "192.168.1.55",
+        "destination_ip": "104.16.132.229",
+        "event": "SQL Injection Attempt",
+        "severity": "High"
+    },
+    {
+        "timestamp": "2026-07-23T10:20:00",
+        "source_ip": "172.16.0.4",
+        "destination_ip": "13.107.42.14",
+        "event": "Malware Download",
+        "severity": "Critical"
+    }
+]
